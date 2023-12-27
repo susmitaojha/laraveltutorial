@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2023 at 03:49 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- Generation Time: Mar 19, 2023 at 10:58 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,44 +33,20 @@ CREATE TABLE `customers` (
   `email` varchar(250) NOT NULL,
   `mobile_no` varchar(250) NOT NULL,
   `address` text NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `email`, `mobile_no`, `address`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'susmita ojha', 'admin1234@gmail.com', '45648654', 'west bengal', NULL, '2023-03-07 09:29:58', '2023-03-19 03:44:50'),
-(2, 'demo', 'mshc.purulia11@gmail.com', '12345678', 'gfghvn', NULL, '2023-03-19 08:27:48', '2023-03-19 03:50:51'),
-(7, 'susmita', 'susmita@gmail.com', '9870989090', 'kolkata', '1679846374.jpg', '2023-03-19 08:34:12', '2023-03-26 10:29:34'),
-(11, 'test', 'test@gmail.com', '8989898989', 'west bengal', '1679845106.jpg', '2023-03-26 15:38:26', '2023-03-26 10:08:26'),
-(12, 'xyz', 'xyz@gmail.com', '99999999', 'kestopur', NULL, '2023-04-23 14:43:53', '2023-04-23 09:13:53'),
-(13, 'test susmi', 'testlaravel@gmail.com', '123456789', 'delhi', NULL, '2023-10-07 10:45:28', '2023-10-07 05:15:28');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_addresses`
---
-
-CREATE TABLE `customer_addresses` (
-  `id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL,
-  `address` text DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `customer_addresses`
---
-
-INSERT INTO `customer_addresses` (`id`, `customer_id`, `address`, `created_at`, `updated_at`) VALUES
-(1, 1, 'kolkata,kestopur,700102', '2023-04-16 15:34:45', '2023-04-16 10:04:45'),
-(2, 1, 'Kharagpur, west bengal', '2023-10-06 22:13:44', '2023-10-06 16:43:44');
+INSERT INTO `customers` (`id`, `name`, `email`, `mobile_no`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'susmita ojha', 'admin1234@gmail.com', '45648654', 'west bengal', '2023-03-07 09:29:58', '2023-03-19 03:44:50'),
+(2, 'demo', 'mshc.purulia11@gmail.com', '12345678', 'gfghvn', '2023-03-19 08:27:48', '2023-03-19 03:50:51'),
+(3, 'demo', 'mshc.purulia@gmail.com', '12345678', 'gfghvn', '2023-03-19 08:29:09', '2023-03-19 02:59:09'),
+(4, 'test', 'test@gmail.com', '8989898989', 'kolkata', '2023-03-19 08:30:47', '2023-03-19 03:00:47'),
+(7, 'susmita', 'susmita@gmail.com', '9870989090', 'kolkata', '2023-03-19 08:34:12', '2023-03-19 03:04:12');
 
 -- --------------------------------------------------------
 
@@ -80,11 +56,11 @@ INSERT INTO `customer_addresses` (`id`, `customer_id`, `address`, `created_at`, 
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -96,7 +72,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -117,8 +93,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -127,7 +103,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('riyaojha2013@gmail.com', '$2y$10$sV1c2zGuQupP6fBPPPo93u92vdtINfwUAZbjpiwMUfyvP6S8hbFqy', '2023-10-06 09:43:05');
+('riyaojha2013@gmail.com', '$2y$10$jkw1dohsGMaKMIcN8tpLzugKaoCPQVbkE18ppYowABOKPVApLFiyK', '2023-02-26 10:07:27');
 
 -- --------------------------------------------------------
 
@@ -137,11 +113,11 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -156,11 +132,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -170,7 +146,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'riya', 'ojhaarati18@gmail.com', NULL, '$2y$10$ZxHhGJhLgLg7KjlZF6yoKOac5mI/nLzYMmRfsApuVjSswNLQbLPEi', NULL, '2023-10-06 10:34:13', '2023-10-06 10:34:13');
+(1, 'susmita', 'riyaojha2013@gmail.com', NULL, '$2y$10$.UoCZhxz7k1woOjIPAuV0eRZ18JaUSgvHToSPEZF7zEmv1xOQ7N0q', NULL, '2023-02-19 03:53:17', '2023-02-19 03:53:17');
 
 --
 -- Indexes for dumped tables
@@ -180,12 +156,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customer_addresses`
---
-ALTER TABLE `customer_addresses`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -230,13 +200,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `customer_addresses`
---
-ALTER TABLE `customer_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -260,7 +224,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
